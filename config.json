@@ -1,4 +1,7 @@
 {
-        "input_path" : "data/sigma_cabs.csv"
+        "train_path" : "data/sigma_cabs.csv",
+        "test_path" : "data/test.csv",
+        "model_path" : "models/",
+        "target_column" : "Surge_Pricing_Type"
 
     }
