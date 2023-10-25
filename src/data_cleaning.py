@@ -69,6 +69,7 @@ def type_conversion(df):
                     'Var2':'int',
                     'Var3':'int'
                     }
+
                 )
     return df
 
