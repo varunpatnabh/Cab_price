@@ -67,8 +67,9 @@ def type_conversion(df):
                     
                     'Var1':'int',
                     'Var2':'int',
-                    'Var3':'int',
-                    'Surge_Pricing_Type':'int'}
+                    'Var3':'int'
+                    }
+
                 )
     return df
 
