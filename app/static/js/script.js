@@ -32,21 +32,13 @@ function predictSurgePricing() {
                     }
 
 
-    console.log(
-        'Trip_ID' , Trip_ID, 
-        'Trip_Distance' , Trip_Distance, 
-        'Type_of_Cab' , Type_of_Cab, 
-        'Customer_Since_Months' , Customer_Since_Months,
-        'Life_Style_Index' , Life_Style_Index, 
-        'Confidence_Life_Style_Index' , Confidence_Life_Style_Index, 
-        'Destination_Type' , Destination_Type,
-        'Customer_Rating' ,Customer_Rating, 
-        'Cancellation_Last_1Month' ,Cancellation_Last_1Month, 
-        'Var1' , Var1, 
-        'Var2' , Var2, 
-        'Var3' , Var3,
-        'Gender' , Gender
-    )
+    console.log("Passed data for prediction are : ",inputData);
+
+    // Check if any field is empty
+    if (Trip_ID === '' || isNaN(Trip_Distance) || Type_of_Cab === '' || isNaN(Customer_Since_Months) || isNaN(Life_Style_Index) || Confidence_Life_Style_Index === '') {
+        alert('Please fill out all fields before submitting.');
+        return;
+    }
 
     // Send a POST request to your Flask API
     fetch('http://localhost:5000/predict', {
