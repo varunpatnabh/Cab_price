@@ -1,7 +1,7 @@
 function predictSurgePricing() {
     event.preventDefault(); // Prevent the default form submission behavior
 
-    // Retrieve input values
+    // Retrieve and collecting all the input values
     const Trip_ID = document.getElementById('Trip_ID').value;
     const Trip_Distance = parseFloat(document.getElementById('Trip_Distance').value);
     const Type_of_Cab = document.getElementById('Type_of_Cab').value;
@@ -32,7 +32,7 @@ function predictSurgePricing() {
                     }
 
 
-    console.log("Passed data for prediction are : ",inputData);
+    // console.log("Passed data for prediction are : ",inputData);
 
     // Check if any field is empty
     if (Trip_ID === '' || isNaN(Trip_Distance) || Type_of_Cab === '' || isNaN(Customer_Since_Months) || isNaN(Life_Style_Index) || Confidence_Life_Style_Index === '') {

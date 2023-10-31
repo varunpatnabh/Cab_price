@@ -41,7 +41,7 @@ def predict():
 
     # Take the first value of prediction
     result = prediction[0]
-    print("price : ",result)
+    # print("price : ",result)
     return jsonify({'prediction': str(result)})
 
 
@@ -50,51 +50,8 @@ def index():
     return render_template('index.html')
 
 
+
 if __name__ == '__main__':
     app.run(host='0.0.0.0',port=5000,debug=True)
 
 
-
-#     @app.route("/prediction", methods=['GET', 'POST'])
-# def prediction():
-#     # get inputs from webpage
-   
-#     Trip_ID = request.args.get('Trip_ID'), 
-#     Trip_Distance = request.args.get('Trip_Distance') 
-#     Type_of_Cab = request.args.get('Type_of_Cab') 
-#     Customer_Since_Months = request.args.get('Customer_Since_Months')
-#     Life_Style_Index = request.args.get('Life_Style_Index')
-#     Confidence_Life_Style_Index = request.args.get('Confidence_Life_Style_Index') 
-#     Destination_Type = request.args.get('Destination_Type')
-#     Customer_Rating = request.args.get('Customer_Rating')
-#     Cancellation_Last_1Month = request.args.get('Cancellation_Last_1Month')
-#     Var1 = request.args.get('Var1')
-#     Var2 = request.args.get('Var2')
-#     Var3 = request.args.get('Var3')
-#     Gender = request.args.get('Gender')
-
-#     data_dict = {
-#             'Trip_ID' : Trip_ID, 
-#             'Trip_Distance' : float(Trip_Distance), 
-#             'Type_of_Cab' : Type_of_Cab, 
-#             'Customer_Since_Months' : int(Customer_Since_Months),
-#             'Life_Style_Index' : float(Life_Style_Index), 
-#             'Confidence_Life_Style_Index' : Confidence_Life_Style_Index, 
-#             'Destination_Type' : Destination_Type,
-#             'Customer_Rating' : float(Customer_Rating), 
-#             'Cancellation_Last_1Month' : int(Cancellation_Last_1Month), 
-#             'Var1' : int(Var1), 
-#             'Var2' : int(Var2), 
-#             'Var3' : int(Var3),
-#             'Gender' : Gender
-#         }
-#     print(data_dict)
-    
-#     # Convert input recieved from webpage as dict to dataframe
-#     df = pd.DataFrame.from_dict([data_dict],orient='columns')
-#     print(df.dtypes)
-#     df.to_csv('test_input.csv',mode='a', header=False, index=False)
-#     data = preprocess_and_predict(df,encoded_dict)
-#     prediction = model.predict(data)
-#     print(str(prediction[0]))
-#     return str(prediction[0])
