@@ -3,169 +3,101 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Delivery Time Predictor</title>
+    <title>Surge Pricing Prediction</title>
     <link rel= "stylesheet" type= "text/css" href= "{{ url_for('static',filename='styles/styles.css') }}">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&display=swap" rel="stylesheet">
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.1/jquery.min.js"></script>
 </head>
 <body>
-    <section class="header">
-        <h1>Delivery Time Predictor</h1>
-        <nav>
-            <ul>
-                <li><a href="{{ url_for('index')}}">Home</a></li>
-                <li><a href="{{ url_for('about')}}">About</a></li>
-                <li><a href="{{ url_for('contact')}}">Contact Me</a></li> <!-- Add this line -->
-            </ul>
-        </nav>
-    </section>
+    <header>
+        <h1>Surge Pricing Prediction</h1>
+    </header>
+    <nav>
+        <ul>
+            <li><a href="#">Home</a></li>
+            <li><a href="#">About</a></li>
+            <li><a href="#">Contact</a></li>
+        </ul>
+    </nav>
+    <main>
+        <form id="predictionForm">
+            <label for="Trip_ID">Trip ID</label>
+            <input type="text" id="Trip_ID" required><br>
 
-    <div class="container">
-        <main>
-            <form id="deliveryForm">
-                
-                <div class="input-group">
-                    <div class="input-item">
-                        <label for="ID">ID:</label>
-                        <input type="text" id="ID" required>
-                    </div>
-            
-                    <div class="input-item">
-                        <label for="Delivery_person_ID">Delivery Person ID:</label>
-                        <input type="text" id="Delivery_person_ID" required>
-                    </div>
-            
-                    <div class="input-item">
-                        <label for="Delivery_person_Age">Delivery Person Age:</label>
-                        <input type="number" step="1" id="Delivery_person_Age" required>
-                    </div>
-            
-                    <div class="input-item">
-                        <label for="Delivery_person_Ratings">Delivery Person Ratings:</label>
-                        <input type="number" step="0.1" id="Delivery_person_Ratings" required>
-                    </div>
-                </div>
-            
-                <label for="Restaurant_latitude">Restaurant Latitude:</label>
-                <input type="number" step="0.000001" id="Restaurant_latitude" required><br>
-            
-                <label for="Restaurant_longitude">Restaurant Longitude:</label>
-                <input type="number" step="0.000001" id="Restaurant_longitude" required><br>
-            
-                <label for="Delivery_location_latitude">Delivery Location Latitude:</label>
-                <input type="number" step="0.000001" id="Delivery_location_latitude" required><br>
-            
-                <label for="Delivery_location_longitude">Delivery Location Longitude:</label>
-                <input type="number" step="0.000001" id="Delivery_location_longitude" required><br>
-            
-                <div class="input-group">
-                    <div class="input-item">
-                        <label for="Order_Date">Order Date:</label>
-                        <div class="input-with-icon">
-                            <input type="date" name="" id="Order_Date" required>
-                        </div>
-                    </div>
-            
-                    <div class="input-item">
-                        <label for="Time_Ordered">Time Ordered:</label>
-                        <div class="input-with-icon">
-                            <input type="time" id="Time_Ordered" required>
-                        </div>
-                    </div>
-            
-                    <div class="input-item">
-                        <label for="Time_Order_picked">Time Order Picked:</label>
-                        <div class="input-with-icon">
-                            <input type="time" id="Time_Order_picked" required>
-                        </div>
-                    </div>
-                </div>
+            <label for="Trip_Distance">Trip Distance</label>
+            <input type="number" id="Trip_Distance" step="0.01" required><br>
 
-            
-                <label for="Weatherconditions">Weather Conditions:</label>
-                <select id="Weatherconditions" required>
-                    <option value="Windy">Windy</option>
-                    <option value="Stormy">Stormy</option>
-                    <option value="Fog">Fog</option>
-                    <option value="Sunny">Sunny</option>
-                    <option value="Cloudy">Cloudy</option>
-                    <option value="Sandstorms">Sandstorms</option>
-                </select><br>
-            
-                <label for="Road_traffic_density">Road Traffic Density:</label>
-                <select id="Road_traffic_density" required>
-                    <option value="Low ">Low</option>
-                    <option value="Medium ">Medium</option>
-                    <option value="High ">High</option>
-                    <option value="Jam ">Jam</option>
-                </select><br>
-            
-                <label for="Vehicle_condition">Vehicle Condition:</label>
-                <select id="Vehicle_condition" required>
-                    <option value="1">1</option>
-                    <option value="2">2</option>
-                    <option value="3">3</option>
-                    <option value="4">4</option>
-                    <option value="5">5</option>
-                </select><br>
+            <label for="Type_of_Cab">Type of Cab</label>
+            <select id="Type_of_Cab" required>
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+                <option value="D">D</option>
+                <option value="E">E</option>
+                <option value="F">F</option>
+            </select><br>
 
-                
-                <label for="Type_of_order">Type of Order:</label>
-                <select id="Type_of_order" required>
-                    <option value="Drinks">Drinks</option>
-                    <option value="Snack">Snack</option>
-                    <option value="Meal">Meal</option>
-                    <option value="Buffet">Buffet</option>
-                </select><br>
+            <label for="Customer_Since_Months">Customer Since Months</label>
+            <input type="number" id="Customer_Since_Months" step="1" required><br>
 
-                <label for="Type_of_vehicle">Type of Vehicle:</label>
-                <select id="Type_of_vehicle" required>
-                    <option value="scooter">scooter</option>
-                    <option value="electric_scooter">electric_scooter</option>
-                    <option value="motorcycle">motorcycle</option>
-                </select><br>
+            <label for="Life_Style_Index">Life Style Index</label>
+            <input type="number" id="Life_Style_Index" step="0.01" required><br>
 
+            <label for="Confidence_Life_Style_Index">Confidence Life Style Index</label>
+            <select id="Confidence_Life_Style_Index" required>
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+            </select><br>
 
-                <label for="multiple_deliveries">Multiple Deliveries:</label>
-                <input type="number" step="1" id="multiple_deliveries" required><br>
-            
-                <label for="Festival">Festival:</label>
-                <select id="Festival" required>
-                    <option value="No">No</option>
-                    <option value="Yes">Yes</option>
-                </select><br>
+            <label for="Destination_Type">Destination Type</label>
+            <select id="Destination_Type" required>
+                <option value="A">A</option>
+                <option value="B">B</option>
+                <option value="C">C</option>
+                <option value="D">D</option>
+                <option value="E">E</option>
+                <option value="F">F</option>
+                <option value="G">G</option>
+                <option value="H">H</option>
+                <option value="I">I</option>
+                <option value="J">J</option>
+                <option value="K">K</option>
+                <option value="L">L</option>
+                <option value="M">M</option>
+            </select><br>
 
+            <label for="Customer_Rating">Customer Rating</label>
+            <input type="number" id="Customer_Rating" step="0.1" required><br>
 
-                <label for="City">City:</label>
-                <select id="City" required>
-                    <option value="Semi-Urban ">Semi-Urban </option>
-                    <option value="Urban ">Urban </option>
-                    <option value="Metropolitian ">Metropolitian </option>
-                </select><br>
+            <label for="Cancellation_Last_1Month">Cancellation Last 1 Month</label>
+            <input type="number" id="Cancellation_Last_1Month" step="1" required><br>
 
-                <div class="form-check checkbox-container">
-                    <input type="checkbox" class="form-check-input" id="exampleCheck1">
-                    <label class="form-check-label" for="exampleCheck1">All details filled.</label>
-                </div>
+            <label for="Var1">Var1</label>
+            <input type="number" id="Var1" step="1" required><br>
 
-                <button type="button" onclick="fetchPrediction();"
-                    class="btn btn-lg btn-primary">Submit</button>
-                <button type="button" onclick="ResetData()" id="resetButton" class="d-none"
-                    style="float: right;">Reset</button>
+            <label for="Var2">Var2</label>
+            <input type="number" id="Var2" step="1" required><br>
 
-                <hr>
-                <h3 class="text-white d-none" id="resultText">
-                    Estimated delivery time in minutes :
-                    <small id="result" class="text-white"></small>
-                </h3>
+            <label for="Var3">Var3</label>
+            <input type="number" id="Var3" step="1" required><br>
 
-            </form>
-            
-        </main>
-    </div>
+            <label for="Gender">Gender</label>
+            <select id="Gender" required>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+            </select><br>
+
+            <button type="submit" onclick="predictSurgePricing()">Predict</button>
+            <button type="button" onclick="resetForm()">Reset</button>
+        </form>
+
+        <div id="predictionResult" class="hidden">
+            <h2>Predicted Surge Pricing Type:</h2>
+            <p id="predictedValue"></p>
+        </div>
+    </main>
 
     <footer>
-        <p>&copy; 2023 Delivery Time Predictor</p>
+        &copy; 2023 Surge Pricing Prediction
     </footer>
 
     <script src=static/js/script.js></script>
